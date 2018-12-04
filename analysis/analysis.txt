@@ -1,22 +1,61 @@
-Your name
-Your netid
-
-Copy/Paste results from PercolationStats using PercolationDFS
-
+Sherry Hu
+sxh2
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.177
+200	0.591	0.010	0.150
+400	0.590	0.006	0.907
+800	0.594	0.004	7.162
 
 Copy/Paste results from PercolationStats using PercolationBFS
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	0.129
+200		0.591	0.010	0.171
+400		0.590	0.006	0.913
+800		0.594	0.004	6.994
+1600	0.592	0.002	33.925
+3200	0.593	0.001	185.580
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100		0.593	0.014	0.108
+200		0.591	0.010	0.152
+400		0.590	0.006	0.770
+800		0.594	0.004	4.821
+1600	0.592	0.002	20.050
+3200	0.593	0.001	94.054
+
 1. How does doubling the grid size affect running time (keeping # trials fixed)
 
+Doubling the grid size increases running time. You can see this in each row. For example, the runtime of a grid size of 200,
+which is double 100, has a runtime of 0.152 which is greater than 0.108. The grid size of 3200, which is double of 1600, 
+has a runtime of 94.054, which is greater than 20.050. 
 
 2. How does doubling the number of trials affect running time.
 
+simulation data for 40 trials
+grid	mean	stddev	time
+100		0.594	0.015	0.294
+200		0.591	0.009	0.388
+400		0.591	0.005	1.493
+800		0.593	0.004	9.823
+1600	0.593	0.002	40.300
+3200	0.593	0.001	190.213
+
+From our data we can see that doubling trials makes running time double (roughly) as well. For example, a grid size of 1600 
+used to have a run time of 20.050 but now has a runtime of 40.300. A grid size of 3200 used to have a run time of 94.054
+but now has a runtime of 190.213. 
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+
+Fitting the data points with 20 trials, we obtain a model: y=0.030036396588486x-11.54571641791, where x is the grid size 
+and y is the time in seconds. Since 24 hours is 86400 seconds, we can plug in y=86400 seconds and solve for x. We obtain
+a value of x=2876894.55231. Thus, our largest grid size is 2876895. 
