@@ -2,12 +2,19 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class PercolationBFS extends PercolationDFSFast{
+	/**
+	 * calls super to initialize state in parent class
+	 * @param n: int/size
+	 */
 	public PercolationBFS(int n) {
 		super(n);
 	}
 	
 	/**
-	 * add comments
+	 * uses Queue and bfs instead of dfs
+	 * no recursion
+	 * dequeues a cell, then looks at neighboring cells
+	 * if neighbor cell is open and not full, it should be marked as full, then enqueued
 	 */
 	@Override
 	protected void dfs(int row, int col) {

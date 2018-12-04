@@ -1,10 +1,19 @@
 public class PercolationUF implements IPercolate{
+	/**
+	 * instance variables
+	 */
 	private boolean[][] myGrid; 
 	int myOpenCount;
 	IUnionFind myFinder;
 	private final int VTOP;
 	private final int VBOTTOM;
 	
+	/**
+	 * calls initialize to initialize myFinder
+	 * VTOP and VBOTTOM set into int values
+	 * @param size
+	 * @param finder
+	 */
 	public PercolationUF(int size, IUnionFind finder) {
 		myGrid = new boolean[size][size];
 		finder.initialize(size*size+2);
@@ -13,6 +22,11 @@ public class PercolationUF implements IPercolate{
 		VBOTTOM = size*size+1;
 	}
 	
+	/**
+	 * throws exception when needed
+	 * checks to see if cell is already open
+	 * if not open, marks cell as open and connects with open neighbors
+	 */
 	@Override
 	public void open(int row, int col) {
 		if (row < 0 || row >= myGrid.length) {
@@ -39,6 +53,11 @@ public class PercolationUF implements IPercolate{
 		}
 	}
 	
+	/**
+	 * returns true when the cell is open
+	 * returns false when cell is not open
+	 * throws exception when needed
+	 */
 	@Override
 	public boolean isOpen(int row, int col) {
 		if (row < 0 || row >= myGrid.length) {
@@ -52,6 +71,11 @@ public class PercolationUF implements IPercolate{
 		return myGrid[row][col];
 	}
 	
+	/**
+	 * returns true when cell is full
+	 * returns false when cell is not full
+	 * throws exception when needed
+	 */
 	@Override
 	public boolean isFull(int row, int col) {
 		if (row < 0 || row >= myGrid.length) {
@@ -65,11 +89,19 @@ public class PercolationUF implements IPercolate{
 		return myFinder.connected(VTOP, row*myGrid.length + col);
 	}
 	
+	/**
+	 * returns true if system percolates
+	 * returns false if system does not percolate
+	 * does this by calling connected with parameters VTOP and VBOTTOM
+	 */
 	@Override
 	public boolean percolates() {
 		return myFinder.connected(VTOP, VBOTTOM);
 	}
 	
+	/**
+	 * returns number of open sites
+	 */
 	@Override
 	public int numberOfOpenSites() {
 		return myOpenCount;

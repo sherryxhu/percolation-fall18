@@ -1,4 +1,8 @@
 public class PercolationDFSFast extends PercolationDFS {
+	/**
+	 * calls super to initialize the state in parent class
+	 * @param n: int/size
+	 */
 	public PercolationDFSFast(int n){
 		super(n);
 	}
@@ -7,6 +11,7 @@ public class PercolationDFSFast extends PercolationDFS {
 	 * checks to see if cell is in top row or if connected to a full cell
 	 * if so, call dfs
 	 * dfs marks cell as full
+	 * @param row, col
 	 */
 	@Override 
 	protected void updateOnOpen(int row, int col) {
